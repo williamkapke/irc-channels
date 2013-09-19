@@ -1,6 +1,6 @@
 {
 	"name": "irc-channels",
-	"version": "3.5.8",
+	"version": "3.5.9",
 	"description": "Add channel support to irc-connect",
 	"main": "channels.js",
 	"scripts": {
@@ -21,6 +21,7 @@
 		"url": "https://github.com/williamwicks/irc-channels/issues"
 	},
 	"dependencies": {
-		"irc-connect": "~2"
+		"irc-connect": "~2",
+		"debug": "~0"
 	}
 }
