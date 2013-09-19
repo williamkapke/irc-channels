@@ -1,0 +1,26 @@
+{
+	"name": "irc-channels",
+	"version": "3.5.8",
+	"description": "Add channel support to irc-connect",
+	"main": "channels.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/williamwicks/irc-channels.git"
+	},
+	"keywords": [
+		"irc",
+		"channels",
+		"irc-connect"
+	],
+	"author": "William Wicks",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/williamwicks/irc-channels/issues"
+	},
+	"dependencies": {
+		"irc-connect": "~1"
+	}
+}
