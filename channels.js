@@ -42,6 +42,7 @@ module.exports = {
 		client
 			.on('JOIN', onjoin)
 			.on('QUIT', onquit)
+			.on('NICK', onnick)
 			.on('PART', handler)
 			.on('KICK', handler)
 			.on('PRIVMSG', handler)
@@ -137,8 +138,7 @@ function initChannel(client, cname){
 }
 
 function onquit(event){
-	var who = event.nick;
-	var isYou = who===this.nick();
+	var isYou = event.nick===this.nick();
 	var client = this;
 
 	Object.keys(this.channels).forEach(function (cname) {
@@ -159,6 +159,21 @@ function removeName(client, channel, isYou, event) {
 		delete client.channels[event.params[0]];
 		dbg('channel removed');
 	}
+}
+
+function onnick(event) {
+	var who = event.nick;
+	var new_nick = event.params[0];
+	var client = this;
+
+	Object.keys(this.channels).forEach(function (cname) {
+		var channel = client.channels[cname];
+		var idx = channel.names.indexOf(who);
+		if(~idx) {
+			channel.names[idx] = new_nick;
+			emit(channel, event);
+		}
+	});
 }
 
 function emit(channel, event) {
