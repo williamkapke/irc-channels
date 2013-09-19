@@ -82,9 +82,9 @@ function handler(event){
 		channel.__active = true;
 		var names = channel.names = [];
 
-		this.on('RPL_TOPIC', foo);
-		this.on('RPL_TOPIC_WHO_TIME', foo);
-		this.on('RPL_ENDOFNAMES', foo);
+		this.on('RPL_TOPIC', intro);
+		this.on('RPL_TOPIC_WHO_TIME', intro);
+		this.on('RPL_ENDOFNAMES', intro);
 
 		this.on('RPL_NAMREPLY', namereply);
 		function namereply(event){
@@ -92,10 +92,10 @@ function handler(event){
 			names.push.apply(names, event.params[3].split(' '));
 		}
 
-		function foo(event){
+		function intro(event){
 			if(event.params[1].toLowerCase()!==name) return;
 
-			this.removeListener(event.command, foo);
+			this.removeListener(event.command, intro);
 			switch(event.command){
 				case 'RPL_TOPIC':
 					channel.topic.message = event.params[2];
@@ -106,9 +106,9 @@ function handler(event){
 					break;
 				case 'RPL_ENDOFNAMES':
 					//make sure everything is removed
-					this.removeListener('RPL_TOPIC', foo);
-					this.removeListener('RPL_TOPIC_WHO_TIME', foo);
-					this.removeListener('RPL_ENDOFNAMES', foo);
+					this.removeListener('RPL_TOPIC', intro);
+					this.removeListener('RPL_TOPIC_WHO_TIME', intro);
+					this.removeListener('RPL_ENDOFNAMES', intro);
 					this.removeListener('RPL_NAMREPLY', namereply);
 					channel.emit('joined');
 					break;
