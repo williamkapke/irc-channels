@@ -21,6 +21,6 @@
 		"url": "https://github.com/williamwicks/irc-channels/issues"
 	},
 	"dependencies": {
-		"irc-connect": "~1"
+		"irc-connect": "~2"
 	}
 }
