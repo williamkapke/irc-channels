@@ -1,6 +1,6 @@
 {
 	"name": "irc-channels",
-	"version": "3.6.0",
+	"version": "3.6.1",
 	"description": "Add channel support to irc-connect",
 	"main": "channels.js",
 	"scripts": {
