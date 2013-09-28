@@ -129,12 +129,11 @@ function onquit(event){
 
 	Object.keys(this.channels).forEach(function (cname) {
 		var channel = client.channels[cname];
+		if(isYou){
+			destroy(channel);
+		}
 		channel.__emit(event);
 	});
-
-	if(isYou){
-		destroy(channel);
-	}
 }
 function onpart(event) {
 	var isYou = event.nick===this.nick();
