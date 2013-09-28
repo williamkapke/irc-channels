@@ -12,7 +12,7 @@ irc.connect('irc.freenode.net')
 	.on('welcome', function (msg) {
 		console.log(msg);
 
-		this.join('#storehours', function(channel){
+		this.join('#node.js', function(channel){
 
 			channel.on('data', function (event) {
 				console.log(JSON.stringify(event));
@@ -37,11 +37,11 @@ It sends the text followed by a `\n`.
 #### channel.name
 Gets the name of the channel.
 
-#### channel.msg
+#### channel.msg(text)
 Sends a `PRIVMSG` to the channel.
 
-#### channel.part
-Sends a `PRIVMSG` to the channel.
+#### channel.part()
+Leave the channel.
 
 #### channel.topic
 Gets current topic of the channel. Returns an `object`.
@@ -69,7 +69,7 @@ The channel will emit the following channel specific events:
 #### Event:'TOPIC'
 #### Event:'QUIT'
 #### Event:'names'
-Emitted after the names list has been parsed.
+Emitted anytime the names list has been parsed for this channel.
 
 ### license
 MIT
